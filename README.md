@@ -1,6 +1,6 @@
 # Day-Ahead Electricity Load Forecasting: Energy Cooperative (Aveiro, Portugal)
 
-Hourly day-ahead forecast of electricity use for a local energy cooperative, built from the public **Loureiro dataset** (172 smart meters, 15-minute readings, May 2022 to Sep 2023) joined with Aveiro weather data. Completed as part of my Certified Data Scientist training (IABAC / AFRICDSA); this write-up and code were produced with AI assistance and I reviewed the results.
+Hourly day-ahead forecast of electricity use for a local energy cooperative, built from the public **"Electricity consumption dataset of a local energy cooperative"** (Monteiro et al., 2024) (172 smart meters, 15-minute readings, May 2022 to Sep 2023) joined with Aveiro weather data. Completed as part of my Certified Data Scientist training (IABAC / AFRICDSA); this write-up and code were produced with AI assistance and I reviewed the results.
 
 ## Result (walk-forward, Dec 2022 to May 2023, 4,296 hourly test points)
 
@@ -28,8 +28,14 @@ Gradient boosting cuts error by about **22% against the best naive baseline**. I
 - Gains over the baseline are real but moderate; this is a clean, honest baseline study, not a production system.
 
 ## Run it
+1. Download the dataset (CC BY 4.0): https://data.mendeley.com/datasets/vryvyfz2tj (DOI 10.17632/vryvyfz2tj.1).
+2. Put `loureiro_energy.csv` and `weather_aveiro_final.csv` (the names used in my copy) in a `data/` folder next to `forecast.py`. If your download is named differently, rename the files or edit the two `read_csv` lines.
+3. Run:
 ```
 pip install pandas numpy scikit-learn matplotlib
-python forecast.py path/to/LoureiroDataset
+python forecast.py            # reads ./data
+python forecast.py other/dir  # or pass the folder explicitly
 ```
-Data: Loureiro et al., electricity consumption dataset of a local energy cooperative (public). The raw CSVs are not included here (36 MB); download them from the original source.
+The raw files (about 39 MB) are not committed to keep the repo light. `predictions.csv` holds the test-period forecasts so results can be inspected without re-running.
+
+**Citation:** Monteiro, F., Oliveira, R., Almeida, J., Gonçalves, P., Bartolomeu, P., Neto, J., Deus, R. (2024). *Electricity consumption dataset of a local energy cooperative*. Mendeley Data, V1. https://doi.org/10.17632/vryvyfz2tj.1 (CC BY 4.0).

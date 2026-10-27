@@ -5,7 +5,7 @@ from sklearn.ensemble import HistGradientBoostingRegressor
 from sklearn.linear_model import RidgeCV
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
-D = sys.argv[1]
+D = sys.argv[1] if len(sys.argv) > 1 else 'data'   # folder holding loureiro_energy.csv and weather_aveiro_final.csv
 e = pd.read_csv(D+'/loureiro_energy.csv', parse_dates=['Time']).set_index('Time')
 w = pd.read_csv(D+'/weather_aveiro_final.csv', parse_dates=['Time']).set_index('Time')
 act = e.notna().sum(axis=1)
