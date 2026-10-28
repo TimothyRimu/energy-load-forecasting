@@ -28,6 +28,8 @@ Gradient boosting cuts error by about **22% against the best naive baseline**. I
 - Gains over the baseline are real but moderate; this is a clean, honest baseline study, not a production system.
 
 ## Run it
+
+A notebook version, [`energy_load_forecasting.ipynb`](energy_load_forecasting.ipynb), walks through the same analysis step by step. Its outputs are built from the committed `results.json` and `predictions.csv`; the full-pipeline section runs only if you add the raw data.
 1. Download the dataset (CC BY 4.0): https://data.mendeley.com/datasets/vryvyfz2tj (DOI 10.17632/vryvyfz2tj.1).
 2. Put `loureiro_energy.csv` and `weather_aveiro_final.csv` (the names used in my copy) in a `data/` folder next to `forecast.py`. If your download is named differently, rename the files or edit the two `read_csv` lines.
 3. Run:
